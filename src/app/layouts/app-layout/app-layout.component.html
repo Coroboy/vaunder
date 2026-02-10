@@ -1,9 +1,26 @@
 <ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home" href="/home">
-      <ion-icon name="home"></ion-icon>
-      <ion-label>Home</ion-label>
+  <ion-tab-bar slot="bottom" class="bg-white border-t border-[#DDDDDD] h-16 pointer-events-auto shadow-none">
+
+    <ion-tab-button tab="home" href="/home" class="bg-transparent group">
+      <ion-icon name="search-outline"
+        class="text-2xl transition-all group-[.tab-selected]:name-[search] group-[.tab-selected]:text-primary text-[#717171]"></ion-icon>
+      <ion-label
+        class="text-[10px] font-medium transition-all group-[.tab-selected]:text-primary text-[#717171] mt-1">Explorar</ion-label>
     </ion-tab-button>
-    <!-- Add other tabs here -->
+
+    <ion-tab-button tab="favorites" class="bg-transparent group">
+      <ion-icon name="heart-outline"
+        class="text-2xl transition-all group-[.tab-selected]:name-[heart] group-[.tab-selected]:text-primary text-[#717171]"></ion-icon>
+      <ion-label
+        class="text-[10px] font-medium transition-all group-[.tab-selected]:text-primary text-[#717171] mt-1">Favoritos</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile" class="bg-transparent group">
+      <ion-icon name="person-outline"
+        class="text-2xl transition-all group-[.tab-selected]:name-[person] group-[.tab-selected]:text-primary text-[#717171]"></ion-icon>
+      <ion-label
+        class="text-[10px] font-medium transition-all group-[.tab-selected]:text-primary text-[#717171] mt-1">Perfil</ion-label>
+    </ion-tab-button>
+
   </ion-tab-bar>
 </ion-tabs>

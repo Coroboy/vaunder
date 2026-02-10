@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+@theme {
+    --color-primary: #6366f1;
+    --color-success: #10b981;
+    --color-gray-900: #222222;
+    --color-gray-500: #717171;
+    --color-gray-200: #dddddd;
+    --color-gray-50: #f9fafb;
+
+    --radius-xl: 12px;
+    --radius-2xl: 16px;
+}
+
+:root {
+    --ion-background-color: #ffffff;
+    --ion-text-color: #222222;
+}
+
+
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------

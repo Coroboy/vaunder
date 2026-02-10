@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { home } from 'ionicons/icons';
+import { searchOutline, search, heartOutline, heart, personOutline, person, homeOutline, home } from 'ionicons/icons';
 
 @Component({
   selector: 'app-layout',
@@ -13,7 +13,17 @@ import { home } from 'ionicons/icons';
 export class AppLayoutComponent {
 
   constructor() {
-    addIcons({ home });
+    addIcons({
+      'search': search,
+      'heart': heart,
+      'person': person,
+      'home': home,
+      'search-outline': searchOutline,
+      'heart-outline': heartOutline,
+      'person-outline': personOutline,
+      'home-outline': homeOutline
+    });
   }
 
 }
+

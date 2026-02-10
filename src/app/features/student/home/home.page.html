@@ -1,20 +1,90 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header class="ion-no-border bg-white pt-4">
+  <!-- Fake Search Bar -->
+  <div class="px-6 mb-4">
+    <div
+      class="flex items-center gap-4 p-3 bg-white border border-gray-100 rounded-full shadow-md cursor-pointer hover:shadow-lg transition-all active:scale-95">
+      <div class="pl-2">
+        <ion-icon name="search-outline" class="text-xl text-[#222222]"></ion-icon>
+      </div>
+      <div class="flex flex-col flex-1">
+        <span class="text-sm font-bold text-[#222222]">¿Dónde quieres vivir?</span>
+        <span class="text-[11px] text-[#717171]">Cualquier zona • Cualquier semana</span>
+      </div>
+      <div class="pr-1">
+        <div class="p-2 border border-[#DDDDDD] rounded-full">
+          <ion-icon name="options-outline" class="text-lg text-[#222222]"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categories Scrollable Row -->
+  <div class="flex overflow-x-auto gap-8 px-6 pb-4 scroll-smooth no-scrollbar">
+    @for (cat of categories(); track cat.id) {
+    <div
+      class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group opacity-60 hover:opacity-100 transition-opacity border-b-2 border-transparent hover:border-black pb-2">
+      <ion-icon [name]="cat.icon" class="text-2xl text-[#222222]"></ion-icon>
+      <span class="text-[11px] font-medium text-[#222222] whitespace-nowrap">{{ cat.name }}</span>
+    </div>
+    }
+  </div>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="px-6 py-2">
+    <!-- The Feed -->
+    <div class="grid grid-cols-1 gap-8">
+      @for (room of rooms(); track room.id) {
+      <div class="flex flex-col gap-3 group active:scale-[0.99] transition-all cursor-pointer">
+        <!-- Image Section -->
+        <div class="relative overflow-hidden rounded-xl aspect-[20/19] bg-gray-100">
+          <img [src]="room.imageUrl" [alt]="room.title"
+            class="object-cover w-full h-full scale-100 group-hover:scale-105 transition-transform duration-500">
+          <button
+            class="absolute top-4 right-4 p-2 bg-white/70 backdrop-blur-md rounded-full text-[#222222] shadow-sm transition-all hover:bg-white active:scale-90">
+            <ion-icon name="heart" class="text-xl"></ion-icon>
+          </button>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+          @if (room.isVerified) {
+          <div class="absolute top-4 left-4">
+            <ion-badge color="success"
+              class="font-bold text-[9px] uppercase tracking-widest rounded-md px-2.5 py-1.5 shadow-sm border border-white/20">
+              Verificado
+            </ion-badge>
+          </div>
+          }
+        </div>
+
+        <!-- Content Section -->
+        <div class="flex flex-col gap-0.5 px-0.5">
+          <!-- Row 1: Location + Rating -->
+          <div class="flex justify-between items-start">
+            <h3 class="text-base font-bold text-[#222222] truncate pr-4">
+              {{ room.location }}
+            </h3>
+            <div class="flex items-center gap-1 shrink-0">
+              <ion-icon name="star" class="text-sm text-[#222222]"></ion-icon>
+              <span class="text-sm font-light text-[#222222]">{{ room.rating }}</span>
+            </div>
+          </div>
+
+          <!-- Row 2: Distance/University -->
+          <p class="text-sm text-[#717171] font-normal leading-tight">
+            {{ room.distance }}
+          </p>
+
+          <p class="text-sm text-[#717171] font-normal leading-tight opacity-70">
+            {{ room.dates }}
+          </p>
+
+          <!-- Row 3: Price -->
+          <div class="mt-2 flex items-baseline gap-1">
+            <span class="text-base font-bold text-[#222222]">{{ room.price }}</span>
+            <span class="text-sm text-[#717171] font-normal"> / mes</span>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
   </div>
 </ion-content>
